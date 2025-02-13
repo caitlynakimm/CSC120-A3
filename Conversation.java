@@ -1,20 +1,26 @@
+import java.util.Scanner;
+import java.util.ArrayList;
 
 class Conversation implements Chatbot {
 
   // Attributes 
+  int userInputRounds;
 
   /**
    * Constructor 
    */
-  Conversation() {
-    
+  public Conversation() {
+    ArrayList<String> chatbotResponses = new ArrayList<String>();
+    chatbotResponses.add("hi");
+    chatbotResponses.add("hi");
+    chatbotResponses.add("hi");
   }
 
   /**
    * Starts and runs the conversation with the user
    */
   public void chat() {
-
+    /**loop? */
   }
 
   /**
@@ -35,7 +41,14 @@ class Conversation implements Chatbot {
   }
 
   public static void main(String[] arguments) {
-
+    Scanner input = new Scanner(System.in);
+    String user_input = input.nextLine();
+    System.out.println(user_input);
+    // int num_rounds = input.nextInt();
+    // input.nextline();
+    // String user_input = input.nextLine();
+    
+    System.out.println(x:"How many rounds?");
     Conversation myConversation = new Conversation();
     myConversation.chat();
     myConversation.printTranscript();
