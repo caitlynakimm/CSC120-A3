@@ -9,18 +9,28 @@ class Conversation implements Chatbot {
   /**
    * Constructor 
    */
-  public Conversation() {
+  public Conversation(int num_rounds) {
     ArrayList<String> chatbotResponses = new ArrayList<String>();
-    chatbotResponses.add("hi");
-    chatbotResponses.add("hi");
-    chatbotResponses.add("hi");
+    chatbotResponses.add("yup");
+    chatbotResponses.add("yup");
+    chatbotResponses.add("yup");
+    this.userInputRounds = num_rounds;
   }
 
   /**
    * Starts and runs the conversation with the user
    */
-  public void chat() {
+  public void chat(int num_rounds) {
     /**loop? */
+    this.userInputRounds = num_rounds;
+    System.out.println("Hi there!  What's on your mind?");
+    int counter = 0;
+    while (counter < num_rounds) {
+      
+      counter += counter;
+    }
+
+
   }
 
   /**
@@ -36,22 +46,24 @@ class Conversation implements Chatbot {
    * @return mirrored or canned response to user input  
    */
   public String respond(String inputString) {
-    String returnString = ""; 
+    String returnString = "Uh-huh"; 
     return returnString; 
   }
 
   public static void main(String[] arguments) {
-    Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in); //create scanner object
+    
+    System.out.println("How many rounds?");
+    input.nextLine();
+    int num_rounds = input.nextInt();
+
     String user_input = input.nextLine();
     System.out.println(user_input);
-    // int num_rounds = input.nextInt();
-    // input.nextline();
-    // String user_input = input.nextLine();
     
-    System.out.println(x:"How many rounds?");
     Conversation myConversation = new Conversation();
     myConversation.chat();
     myConversation.printTranscript();
 
+    input.close();
   }
 }
