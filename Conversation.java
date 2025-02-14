@@ -5,6 +5,7 @@ class Conversation implements Chatbot {
 
   // Attributes 
   int userInputRounds;
+  ArrayList<String> chatbotResponses;
 
   /**
    * Constructor 
@@ -20,14 +21,18 @@ class Conversation implements Chatbot {
   /**
    * Starts and runs the conversation with the user
    */
-  public void chat(int num_rounds) {
+  public void chat(Scanner input, int num_rounds) {
     /**loop? */
-    this.userInputRounds = num_rounds;
     System.out.println("Hi there!  What's on your mind?");
     int counter = 0;
+
     while (counter < num_rounds) {
-      
-      counter += counter;
+      String user_input = input.nextLine();
+      System.out.println(user_input);
+
+      System.out.println(respond(user_input));
+
+      counter += 1;
     }
 
 
@@ -45,7 +50,7 @@ class Conversation implements Chatbot {
    * @param inputString the users last line of input
    * @return mirrored or canned response to user input  
    */
-  public String respond(String inputString) {
+  public String respond(String inputString) { //what do we do w inputString?
     String returnString = "Uh-huh"; 
     return returnString; 
   }
@@ -54,14 +59,11 @@ class Conversation implements Chatbot {
     Scanner input = new Scanner(System.in); //create scanner object
     
     System.out.println("How many rounds?");
-    input.nextLine();
     int num_rounds = input.nextInt();
-
-    String user_input = input.nextLine();
-    System.out.println(user_input);
+    input.nextLine(); //does this remove the new line created by user's enter key?
     
-    Conversation myConversation = new Conversation();
-    myConversation.chat();
+    Conversation myConversation = new Conversation(num_rounds);
+    myConversation.chat(input, num_rounds);
     myConversation.printTranscript();
 
     input.close();
