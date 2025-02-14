@@ -1,7 +1,7 @@
 interface Chatbot {
 
     void chat();
-    //void printTranscript();
+    //void printTranscript();//
     String respond(String inputString); 
     
 }

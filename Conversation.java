@@ -18,7 +18,7 @@ class Conversation implements Chatbot {
     this.userInputRounds = num_rounds;
   }
 
-  public void chat() {
+  public void chat() { //implements chatbot's chat() method, matches interface
     Scanner input = new Scanner(System.in);
     chat(input, userInputRounds);
     input.close();
@@ -34,7 +34,7 @@ class Conversation implements Chatbot {
 
     while (counter < num_rounds) {
       String user_input = input.nextLine();
-      System.out.println(user_input);
+      //System.out.println(user_input); used to check if user_input is stored correctly
 
       System.out.println(respond(user_input));
 
@@ -66,6 +66,7 @@ class Conversation implements Chatbot {
     
     System.out.println("How many rounds?");
     int num_rounds = input.nextInt();
+    
     input.nextLine(); //does this remove the new line created by user's enter key?
     
     Conversation myConversation = new Conversation(num_rounds);
