@@ -11,11 +11,17 @@ class Conversation implements Chatbot {
    * Constructor 
    */
   public Conversation(int num_rounds) {
-    ArrayList<String> chatbotResponses = new ArrayList<>();
+    chatbotResponses = new ArrayList<>();
     chatbotResponses.add("yup");
     chatbotResponses.add("yup");
     chatbotResponses.add("yup");
     this.userInputRounds = num_rounds;
+  }
+
+  public void chat() {
+    Scanner input = new Scanner(System.in);
+    chat(input, userInputRounds);
+    input.close();
   }
 
   /**
@@ -43,7 +49,7 @@ class Conversation implements Chatbot {
    */
   //public void printTranscript() {
 
-  }
+  //}
 
   /**
    * Gives appropriate response (mirrored or canned) to user input
@@ -63,8 +69,8 @@ class Conversation implements Chatbot {
     input.nextLine(); //does this remove the new line created by user's enter key?
     
     Conversation myConversation = new Conversation(num_rounds);
-    myConversation.chat(input, num_rounds);
-    myConversation.printTranscript();
+    myConversation.chat();
+    //myConversation.printTranscript();
 
     input.close();
   }
