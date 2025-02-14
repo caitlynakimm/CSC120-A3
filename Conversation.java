@@ -11,7 +11,7 @@ class Conversation implements Chatbot {
    * Constructor 
    */
   public Conversation(int num_rounds) {
-    ArrayList<String> chatbotResponses = new ArrayList<String>();
+    ArrayList<String> chatbotResponses = new ArrayList<>();
     chatbotResponses.add("yup");
     chatbotResponses.add("yup");
     chatbotResponses.add("yup");
@@ -41,7 +41,7 @@ class Conversation implements Chatbot {
   /**
    * Prints transcript of conversation
    */
-  public void printTranscript() {
+  //public void printTranscript() {
 
   }
 
