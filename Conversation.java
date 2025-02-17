@@ -1,5 +1,8 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random; 
 
 class Conversation implements Chatbot {
 
@@ -57,7 +60,34 @@ class Conversation implements Chatbot {
    * @return mirrored or canned response to user input  
    */
   public String respond(String inputString) { //what do we do w inputString?
-    String returnString = "Uh-huh"; 
+    String returnString = " "; 
+
+    //list of mirrored words
+    List<String> mirrorWords = new ArrayList<>(Arrays.asList("I", "me", "you", "am", "my", "your")); 
+
+    //list of canned responses 
+    List<String> cannedResponses = new ArrayList<>(Arrays.asList("uh-huh", "mhmm", "totally!", "that's cool!", "great!", "wow!"));
+
+    //create a random object
+    Random random = new Random();
+
+    //random index
+    int randomIndex = random.nextInt(cannedResponses.size());
+
+    String [] words = inputString.split(" "); //splits the sentence 
+    for (String word : words) { //loop for split sentence  
+      if (mirrorWords.contains(word)) { //check if users input has mirror words 
+         returnString = "mirror word";
+         break;
+      }
+
+      else {
+         returnString = cannedResponses.get(randomIndex);
+      }
+
+    }
+    
+
     return returnString; 
   }
 

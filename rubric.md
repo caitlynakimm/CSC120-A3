@@ -14,17 +14,17 @@ Listed below are various aspects of the assignment.  When you turn in your work,
 
 _____ 1 pt: `reflection.md` lists the classmates you consulted & TA hours attended
 
-_____ 1 pt: Program queries user for number of conversation rounds
+___**YES**__ 1 pt: Program queries user for number of conversation rounds
 
-_____ 1 pt: Program carries out requested number of conversation rounds
+___**YES**__ 1 pt: Program carries out requested number of conversation rounds
 
-_____ 1 pt: Allocates static array of canned responses
+___**YES**__ 1 pt: Allocates static array of canned responses
 
 ### Level 2 (3 pts)
 
-_____ 1 pt: Uses a canned response when no mirror words detected
+___**YES**__ 1 pt: Uses a canned response when no mirror words detected
 
-_____ 1 pt: Detects the requested set of mirror words (at minimum)
+___**YES**__ 1 pt: Detects the requested set of mirror words (at minimum)
 
 _____ 1 pt: Replaces simple mirror words appropriately (unpunctuated, lowercase)
 
