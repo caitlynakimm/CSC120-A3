@@ -75,30 +75,31 @@ class Conversation implements Chatbot {
     int randomIndex = random.nextInt(cannedResponses.size());
 
     String [] words = inputString.split(" "); //splits the sentence 
-    for (String word : words) { //loop for split sentence  
+    for (int i = 0; i < words.length; i++){ //iterating i through the user's sentence
+      String word = words[i]; //access word in words list corresponding to index
+  
+       //loop for split sentence  
       if (mirrorWords.contains(word)) { //check if users input has mirror words 
         //System.out.println(word);
         if (word.equals("I") ){
-          returnString = "you";
+          words[i] = "you";
         }
         else if (word.equals("me")){
-          returnString = "you";
+          words[i]  = "you";
         } 
         else if (word.equals("you")){
-          returnString = "I";
+          words[i] = "I";
         }  
         else if (word.equals("am")){
-          returnString = "are";
+          words[i] = "are";
         }
         else if (word.equals("my")){
-          returnString = "your";
+          words[i] = "your";
         }
         else if (word.equals("your")){
-          returnString = "my";
-        }   
-        
-        //System.out.println();
-        //break;
+          words[i] = "my";
+        } 
+        returnString = String.join(" ", words);  
       }
 
       else {
@@ -106,8 +107,6 @@ class Conversation implements Chatbot {
       }
 
     }
-    
-
     return returnString; 
   }
 
