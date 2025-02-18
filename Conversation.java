@@ -77,8 +77,28 @@ class Conversation implements Chatbot {
     String [] words = inputString.split(" "); //splits the sentence 
     for (String word : words) { //loop for split sentence  
       if (mirrorWords.contains(word)) { //check if users input has mirror words 
-         returnString = "mirror word";
-         break;
+        //System.out.println(word);
+        if (word.equals("I") ){
+          returnString = "you";
+        }
+        else if (word.equals("me")){
+          returnString = "you";
+        } 
+        else if (word.equals("you")){
+          returnString = "I";
+        }  
+        else if (word.equals("am")){
+          returnString = "are";
+        }
+        else if (word.equals("my")){
+          returnString = "your";
+        }
+        else if (word.equals("your")){
+          returnString = "my";
+        }   
+        
+        //System.out.println();
+        //break;
       }
 
       else {
