@@ -43,7 +43,7 @@ class Conversation implements Chatbot {
 
       counter += 1;
     }
-
+    System.out.println("Bye!");
 
   }
 
@@ -51,6 +51,8 @@ class Conversation implements Chatbot {
    * Prints transcript of conversation
    */
   //public void printTranscript() {
+    //System.out.println("TRANSCRIPT:");
+
 
   //}
 
