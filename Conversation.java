@@ -9,17 +9,14 @@ class Conversation implements Chatbot {
   // Attributes 
   int userInputRounds;
   ArrayList<String> chatbotResponses;
-  
+  ArrayList<String> printTranscript;
 
   /**
    * Constructor 
    */
   public Conversation(int num_rounds) {
-    chatbotResponses = new ArrayList<>();
-    chatbotResponses.add("yup");
-    chatbotResponses.add("yup");
-    chatbotResponses.add("yup");
     this.userInputRounds = num_rounds;
+    this.printTranscript = new ArrayList<>();
   }
 
   public void chat() { //implements chatbot's chat() method, matches interface
@@ -32,21 +29,23 @@ class Conversation implements Chatbot {
    * Starts and runs the conversation with the user
    */
   public void chat(Scanner input, int num_rounds) {
-    /**loop? */
 
     System.out.println("Hi there!  What's on your mind?");
+    printTranscript.add("Hi there! What's on your mind?"); //adds greeting to transcript
     int counter = 0;
 
     while (counter < num_rounds) {
       String user_input = input.nextLine();
-      //System.out.println(user_input); used to check if user_input is stored correctly
+      printTranscript.add(user_input); // adds the users input to the transcript
 
-      System.out.println(respond(user_input));
+      String response = respond(user_input);
+      System.out.println(response);
+      printTranscript.add(response); // adds chatbots responses to the transcript
 
       counter += 1;
     }
     System.out.println("Bye!");
-
+    printTranscript.add("Bye!"); //adds bye to transcript
   }
 
   /**
@@ -54,8 +53,9 @@ class Conversation implements Chatbot {
    */
   public void printTranscript() {
     System.out.println("\nTRANSCRIPT:");
-
-
+    for (String line : this.printTranscript) {
+      System.out.println(line);
+    }
   }
 
   /**
@@ -120,7 +120,7 @@ class Conversation implements Chatbot {
       returnString = String.join(" ", words);  
     }
 
-    //gives a canned response if no mirror word 
+    //gives a canned response if there is no mirror word 
     else {
       returnString = cannedResponses.get(randomIndex);
     }
@@ -134,7 +134,7 @@ class Conversation implements Chatbot {
     System.out.println("How many rounds?");
     int num_rounds = input.nextInt();
     
-    input.nextLine(); //does this remove the new line created by user's enter key?
+    input.nextLine(); 
     
     Conversation myConversation = new Conversation(num_rounds);
     myConversation.chat();
