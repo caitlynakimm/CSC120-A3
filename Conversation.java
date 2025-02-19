@@ -8,7 +8,6 @@ class Conversation implements Chatbot {
 
   // Attributes 
   int userInputRounds;
-  ArrayList<String> chatbotResponses;
   ArrayList<String> printTranscript;
 
   /**
