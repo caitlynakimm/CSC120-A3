@@ -54,15 +54,15 @@ ___**YES**__ 2 pts: Executes fully & consistently without crashing (exception/fr
 
 ___**YES**__ 2 pt: Complies with style guidelines (missing items 1 pt each):
 
-      _____ Classes & class members all have Javadoc header comments
+      __**YES**___ Classes & class members all have Javadoc header comments
 
-      _____ Clear and consistent indentation of bracketed sections
+      _**YES**____ Clear and consistent indentation of bracketed sections
 
-      _____ Adheres to Java conventions on naming & capitalization
+      __**YES**___ Adheres to Java conventions on naming & capitalization
 
-      _____ Methods & variables all have clear and accurate names
+      _**YES**____ Methods & variables all have clear and accurate names
 
-      _____ Methods avoid confusing side effects
+      __**YES**___ Methods avoid confusing side effects
 
 ___**YES**__ 1 pt: All required files included with submission (including completed checklist file)
 

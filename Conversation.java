@@ -4,47 +4,49 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random; 
 
+//simulates a conversation between a chatbot and user
+//also mirrors key words, responds with canned responses, and prints transcript of conversation
 class Conversation implements Chatbot {
 
   // Attributes 
-  int userInputRounds;
-  ArrayList<String> printTranscript;
+  int numRounds;
+  ArrayList<String> transcript;
 
   /**
    * Constructor 
    */
-  public Conversation(int num_rounds) {
-    this.userInputRounds = num_rounds;
-    this.printTranscript = new ArrayList<>();
+  public Conversation(int numRounds) {
+    this.numRounds = numRounds;
+    this.transcript = new ArrayList<>();
   }
 
   public void chat() { //implements chatbot's chat() method, matches interface
     Scanner input = new Scanner(System.in);
-    chat(input, userInputRounds);
+    chat(input, numRounds);
     input.close();
   }
 
   /**
    * Starts and runs the conversation with the user
    */
-  public void chat(Scanner input, int num_rounds) {
+  public void chat(Scanner input, int numRounds) {
 
     System.out.println("Hi there!  What's on your mind?");
-    printTranscript.add("Hi there! What's on your mind?"); //adds greeting to transcript
+    transcript.add("Hi there! What's on your mind?"); //adds greeting to transcript
     int counter = 0;
 
-    while (counter < num_rounds) {
-      String user_input = input.nextLine();
-      printTranscript.add(user_input); // adds the users input to the transcript
+    while (counter < numRounds) {
+      String userInput = input.nextLine();
+      transcript.add(userInput); // adds the users input to the transcript
 
-      String response = respond(user_input);
+      String response = respond(userInput);
       System.out.println(response);
-      printTranscript.add(response); // adds chatbots responses to the transcript
+      transcript.add(response); // adds chatbot's responses to the transcript
 
       counter += 1;
     }
     System.out.println("Bye!");
-    printTranscript.add("Bye!"); //adds bye to transcript
+    transcript.add("Bye!"); //adds bye to transcript
   }
 
   /**
@@ -52,7 +54,7 @@ class Conversation implements Chatbot {
    */
   public void printTranscript() {
     System.out.println("\nTRANSCRIPT:");
-    for (String line : this.printTranscript) {
+    for (String line : this.transcript) {
       System.out.println(line);
     }
   }
@@ -80,11 +82,11 @@ class Conversation implements Chatbot {
     //flag to check if mirror word is found 
     boolean mirrorWordFound = false;
 
-    String [] words = inputString.split(" "); //splits the sentence 
+    String [] words = inputString.split(" "); //splits the sentence into separate words and stored in an array
     for (int i = 0; i < words.length; i++){ //iterating i through the user's sentence
       String word = words[i]; //access word in words list corresponding to index
 
-      String lowercaseWord = word.toLowerCase(); //converts the word to lowercase to so case doesn't matter
+      String lowercaseWord = word.toLowerCase(); //converts the word to lowercase so case doesn't matter
   
        //loop for split sentence  
       if (mirrorWords.contains(lowercaseWord)) { //check if users input has mirror words 
@@ -116,7 +118,7 @@ class Conversation implements Chatbot {
 
     //mirrors sentence if there is a mirror word 
     if (mirrorWordFound) {
-      returnString = String.join(" ", words);  
+      returnString = String.join(" ", words) + "?";  
     }
 
     //gives a canned response if there is no mirror word 
@@ -127,15 +129,17 @@ class Conversation implements Chatbot {
     return returnString; 
   }
 
+  //starts the conversation
   public static void main(String[] arguments) {
     Scanner input = new Scanner(System.in); //create scanner object
     
-    System.out.println("How many rounds?");
-    int num_rounds = input.nextInt();
-    
-    input.nextLine(); 
-    
-    Conversation myConversation = new Conversation(num_rounds);
+    System.out.print("How many rounds? ");
+    int numRounds = input.nextInt();
+    input.nextLine(); //consumes or clears out newline left by nextInt() caused by enter key
+   
+    System.out.println();
+
+    Conversation myConversation = new Conversation(numRounds);
     myConversation.chat();
     myConversation.printTranscript();
 
