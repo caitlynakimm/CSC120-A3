@@ -9,32 +9,34 @@ import java.util.Random;
 class Conversation implements Chatbot {
 
   // Attributes 
-  int numRounds;
-  ArrayList<String> transcript;
+  private int numRounds;
+  private ArrayList<String> transcript; 
+  private static final String[] cannedResponses = {"uh-huh", "mhmm", "totally!", "that's cool!", "great!", "wow!"};
+
 
   /**
    * Constructor 
    */
-  public Conversation(int numRounds) {
-    this.numRounds = numRounds;
+  public Conversation() {
     this.transcript = new ArrayList<>();
   }
 
-  public void chat() { //implements chatbot's chat() method, matches interface
-    Scanner input = new Scanner(System.in);
-    chat(input, numRounds);
-    input.close();
-  }
+  
 
   /**
    * Starts and runs the conversation with the user
    */
-  public void chat(Scanner input, int numRounds) {
+  public void chat() {
+    Scanner input = new Scanner(System.in);
+
+    System.out.println("How many rounds? ");
+    numRounds = input.nextInt();
+    input.nextLine();
 
     System.out.println("Hi there!  What's on your mind?");
     transcript.add("Hi there! What's on your mind?"); //adds greeting to transcript
+    
     int counter = 0;
-
     while (counter < numRounds) {
       String userInput = input.nextLine();
       transcript.add(userInput); // adds the users input to the transcript
@@ -47,6 +49,9 @@ class Conversation implements Chatbot {
     }
     System.out.println("Bye!");
     transcript.add("Bye!"); //adds bye to transcript
+
+    printTranscript();
+    input.close();
   }
 
   /**
@@ -65,19 +70,13 @@ class Conversation implements Chatbot {
    * @return mirrored or canned response to user input  
    */
   public String respond(String inputString) { 
-    String returnString = " "; 
+   String returnString = " "; 
 
     //list of mirrored words
     List<String> mirrorWords = new ArrayList<>(Arrays.asList("i", "me", "you", "am", "my", "your", "are")); 
 
-    //list of canned responses 
-    List<String> cannedResponses = new ArrayList<>(Arrays.asList("uh-huh", "mhmm", "totally!", "that's cool!", "great!", "wow!"));
-
     //create a random object
     Random random = new Random();
-
-    //random index for canned responses 
-    int randomIndex = random.nextInt(cannedResponses.size());
 
     //flag to check if mirror word is found 
     boolean mirrorWordFound = false;
@@ -94,23 +93,17 @@ class Conversation implements Chatbot {
 
         if (lowercaseWord.equals("i") ){
           words[i] = "you";
-        }
-        else if (lowercaseWord.equals("me")){
+        } else if (lowercaseWord.equals("me")){
           words[i]  = "you";
-        } 
-        else if (lowercaseWord.equals("you")){
+        } else if (lowercaseWord.equals("you")){
           words[i] = "I";
-        }  
-        else if (lowercaseWord.equals("am")){
+        } else if (lowercaseWord.equals("am")){
           words[i] = "are";
-        }
-        else if (lowercaseWord.equals("are")){
+        } else if (lowercaseWord.equals("are")){
           words[i] = "am";
-        }
-        else if (lowercaseWord.equals("my")){
+        } else if (lowercaseWord.equals("my")){
           words[i] = "your";
-        }
-        else if (lowercaseWord.equals("your")){
+        } else if (lowercaseWord.equals("your")){
           words[i] = "my";
         } 
       }
@@ -119,30 +112,17 @@ class Conversation implements Chatbot {
     //mirrors sentence if there is a mirror word 
     if (mirrorWordFound) {
       returnString = String.join(" ", words) + "?";  
+    } else { //gives a canned response if there is no mirror word 
+      returnString = cannedResponses[random.nextInt(cannedResponses.length)];
     }
-
-    //gives a canned response if there is no mirror word 
-    else {
-      returnString = cannedResponses.get(randomIndex);
-    }
-
     return returnString; 
   }
 
   //starts the conversation
   public static void main(String[] arguments) {
-    Scanner input = new Scanner(System.in); //create scanner object
-    
-    System.out.print("How many rounds? ");
-    int numRounds = input.nextInt();
-    input.nextLine(); //consumes or clears out newline left by nextInt() caused by enter key
-   
-    System.out.println();
 
-    Conversation myConversation = new Conversation(numRounds);
+    Conversation myConversation = new Conversation();
     myConversation.chat();
-    myConversation.printTranscript();
 
-    input.close();
   }
 }
