@@ -15,7 +15,7 @@ class Conversation implements Chatbot {
 
 
   /**
-   * Constructor 
+   * Constructor for Conversation
    */
   public Conversation() {
     this.transcript = new ArrayList<>();
@@ -29,7 +29,7 @@ class Conversation implements Chatbot {
   public void chat() {
     Scanner input = new Scanner(System.in);
 
-    System.out.println("How many rounds? ");
+    System.out.print("How many rounds? ");
     numRounds = input.nextInt();
     input.nextLine();
 
@@ -39,7 +39,7 @@ class Conversation implements Chatbot {
     int counter = 0;
     while (counter < numRounds) {
       String userInput = input.nextLine();
-      transcript.add(userInput); // adds the users input to the transcript
+      transcript.add(userInput); // adds the user's input to the transcript
 
       String response = respond(userInput);
       System.out.println(response);
@@ -70,7 +70,7 @@ class Conversation implements Chatbot {
    * @return mirrored or canned response to user input  
    */
   public String respond(String inputString) { 
-   String returnString = " "; 
+    String returnString = " "; 
 
     //list of mirrored words
     List<String> mirrorWords = new ArrayList<>(Arrays.asList("i", "me", "you", "am", "my", "your", "are")); 
